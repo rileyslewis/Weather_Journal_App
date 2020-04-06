@@ -47,11 +47,12 @@ body{
 }
 
 #content{
+    font-family: 'Work Sans', sans-serif;
 
 }
 
 .headline {
-    font: 28px bold;
+    font: 45px bold 'Rubik', sans-serif;
 }
 .title{
 

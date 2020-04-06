@@ -2,7 +2,6 @@
 let baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=89001&APPID=7b9bf49e1531f81b6aee17cd9f06f9a2';
 let apiKey = '7b9bf49e1531f81b6aee17cd9f06f9a2'
 const userFeelings = document.getElementById('feelings').value;
-const countryCode = ',uk';
 
 document.getElementById('generate').addEventListener('click', performAction);
 // Create a new date instance dynamically with JS
@@ -23,7 +22,7 @@ function performAction(e){
         alert("Mental State, feelings is missing. Please try again.");
         return
     }
-    getData(baseURL+generateZip+countryCode+apiKey)
+    getData(baseURL+generateZip+apiKey)
     .then(
         function(weather) {
             const feelings = document.getElementById('feelings').value;
