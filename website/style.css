@@ -1,6 +1,15 @@
 body{
     background: #fffff8;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: url('images/sky.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 0;
+
 }
 
 #app{
@@ -19,7 +28,7 @@ body{
 .holder{
     border: 2px solid black;
     border-radius: 8px;
-    padding: 20px;
+    padding: 14px;
     margin: 8px;
     background-color: #3b0088;
 }
@@ -79,11 +88,11 @@ input{
 }
 
 button{
-    width: 250px;
-    height: 60px;
+    width: 140px;
+    height: 40px;
     background: #343435;
     color: #f0d43a;
-    font-size: 26px;
+    font-size: 18px;
     font-family: 'Oswald', sans-serif;
     border: none;
     border-radius: 8px;

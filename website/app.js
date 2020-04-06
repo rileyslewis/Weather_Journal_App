@@ -48,7 +48,6 @@ const postData = async (url = '', data = {}) => {
     
     const response = await fetch(url, {
         method: 'POST',
-        credentials: 'same-origin',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -69,7 +68,6 @@ const getData = async (url = '') => {
 
     const response = await fetch(url, {
         method: 'GET',
-        credentials: 'same-origin',
         headers: {
             'Content-Type': 'application/json',
         },
