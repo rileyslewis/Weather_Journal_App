@@ -1,5 +1,5 @@
 /*Global Variables*/
-let baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
+let baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=89001&APPID=7b9bf49e1531f81b6aee17cd9f06f9a2';
 let apiKey = '7b9bf49e1531f81b6aee17cd9f06f9a2'
 const userFeelings = document.getElementById('feelings').value;
 const countryCode = ',uk';
