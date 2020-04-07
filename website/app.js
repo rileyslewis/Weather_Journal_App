@@ -22,7 +22,7 @@ function performAction(e) {
         alert("Mental State, feelings is missing. Please try again.");
         return
     }
-    getData(baseURL + generateZip + apiKey)
+    getData(baseURL)
         .then(
             function(weather) {
                 const feelings = document.getElementById('feelings').value;
