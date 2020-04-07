@@ -1,5 +1,5 @@
 /*Global Variables*/
-const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=89001&APPID=7b9bf49e1531f81b6aee17cd9f06f9a2';
+const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
 const apiKey = '7b9bf49e1531f81b6aee17cd9f06f9a2'
 const userFeelings = document.getElementById('feelings').value;
 
@@ -22,7 +22,7 @@ function performAction(e) {
         alert("Mental State, feelings is missing. Please try again.");
         return
     }
-    getData(baseURL)
+    getData(baseURL + generateZip + apiKey)
         .then(
             function(weather) {
                 const feelings = document.getElementById('feelings').value;
