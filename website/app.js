@@ -6,10 +6,10 @@ const userFeelings = document.getElementById('feelings').value;
 document.getElementById('generate').addEventListener('click', performAction);
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
 
 
-function performAction(e){
+function performAction(e) {
     e.preventDefault();
 
     const generateZip = document.getElementById('zip').value;
@@ -22,30 +22,34 @@ function performAction(e){
         alert("Mental State, feelings is missing. Please try again.");
         return
     }
-    getData(baseURL+generateZip+apiKey)
-    .then(
-        function(weather) {
-            const feelings = document.getElementById('feelings').value;
-            return postData('/addWeather', {temperature: weather.main.temperature, date: newDate, userResponse: feelings})
-        }
-    )
-    .then(
-        function(post) {
-            return getData('/all')
-        }
-    )
-    .then(
-        function(get) {
-            document.getElementById('date').innerHTML = get.date;
-            document.getElementById('temp').innerHTML = get.temperature;
-            document.getElementById('content').innerHTML = get.userResponse;
-        }
-    )
+    getData(baseURL + generateZip + apiKey)
+        .then(
+            function(weather) {
+                const feelings = document.getElementById('feelings').value;
+                return postData('/addWeather', {
+                    temperature: weather.main.temperature,
+                    date: newDate,
+                    userResponse: feelings
+                })
+            }
+        )
+        .then(
+            function(post) {
+                return getData('/all')
+            }
+        )
+        .then(
+            function(get) {
+                document.getElementById('date').innerHTML = get.date;
+                document.getElementById('temp').innerHTML = get.temperature;
+                document.getElementById('content').innerHTML = get.userResponse;
+            }
+        )
 }
 
 
-const postData = async (url = '', data = {}) => {
-    
+const postData = async(url = '', data = {}) => {
+
     const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -58,20 +62,21 @@ const postData = async (url = '', data = {}) => {
         const newData = await response.json();
         console.log(newData);
         return newData;
-    }catch(error) {
+    } catch (error) {
         console.log("error", error);
     }
 };
 
 
-const getData = async (url = '') => {
+const getData = async(url = '') => {
 
     const response = await fetch(url)
-    
-    try { 
+
+    try {
         const newData = await response.json();
         console.log(newData);
-        return newData; 
-    } catch(error) {
-        console.log("error", error); 
-}};
+        return newData;
+    } catch (error) {
+        console.log("error", error);
+    }
+};
