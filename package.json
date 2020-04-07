@@ -1,0 +1,35 @@
+{
+  "name": "weather-journal-app",
+  "version": "1.0.0",
+  "description": "Weather Journal App using Node.js Express, body-parser, cors.",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oslewis/Weather_Journal_App.git"
+  },
+  "keywords": [
+    "asynchronous",
+    "web",
+    "app",
+    "API",
+    "express",
+    "node.js",
+    "cors",
+    "body-parser"
+  ],
+  "author": "Oslewis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oslewis/Weather_Journal_App/issues"
+  },
+  "homepage": "https://github.com/oslewis/Weather_Journal_App#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
