@@ -1,7 +1,9 @@
 # Weather-Journal App Project
 
 ## Overview
-This project creates an asynchronous web app that uses Web API and user data to dynamically update the UI. 
+This project creates an asynchronous web app that uses Web API and user data to dynamically update the UI.
+
+The app provides weather data, helps user log current feelings on the Journal section and document.
 
 ## Instructions
 
@@ -22,4 +24,3 @@ node server.js
 On Browser:
 
 http://localhost:3000
-
