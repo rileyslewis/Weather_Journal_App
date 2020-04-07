@@ -26,7 +26,7 @@ function performAction(e){
     .then(
         function(weather) {
             const feelings = document.getElementById('feelings').value;
-            return postData('/addWeather', {temperature: weather.main.temp, date: newDate, userResponse: feelings})
+            return postData('/addWeather', {temperature: weather.main.temperature, date: newDate, userResponse: feelings})
         }
     )
     .then(
@@ -66,18 +66,12 @@ const postData = async (url = '', data = {}) => {
 
 const getData = async (url = '') => {
 
-    const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
-
-    try {
+    const response = await fetch(url)
+    
+    try { 
         const newData = await response.json();
         console.log(newData);
-        return newData;
-    }catch(error) {
-        console.log("error", error);
-    }
-};
+        return newData; 
+    } catch(error) {
+        console.log("error", error); 
+}};
