@@ -1,13 +1,13 @@
 /*Global Variables*/
 const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
-const apiKey = '7b9bf49e1531f81b6aee17cd9f06f9a2'
-const userFeelings = document.getElementById('feelings').value;
+const apiKey = '&appid=7b9bf49e1531f81b6aee17cd9f06f9a2';
 
-document.getElementById('generate').addEventListener('click', performAction);
+
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
 
+document.getElementById('generate').addEventListener('click', performAction);
 
 function performAction(e) {
     e.preventDefault();
@@ -22,33 +22,39 @@ function performAction(e) {
         alert("Mental State, feelings is missing. Please try again.");
         return
     }
-    getData(baseURL + generateZip + apiKey)
-        .then(
-            function(weather) {
-                const feelings = document.getElementById('feelings').value;
-                return postData('/addWeather', {
-                    temperature: weather.main.temperature,
-                    date: newDate,
-                    userResponse: feelings
-                })
-            }
-        )
-        .then(
-            function(post) {
-                return getData('/all')
-            }
-        )
-        .then(
-            function(get) {
-                document.getElementById('date').innerHTML = get.date;
-                document.getElementById('temp').innerHTML = get.temperature;
-                document.getElementById('content').innerHTML = get.userResponse;
-            }
-        )
+    weatherData (baseURL, generateZip, apiKey)
+        .then( (data) => {
+            postData('/addWeather', {date: newDate, temperature: data.main.temp, feelings: feelings});
+        })
+        .then(updateUI)
+}
+
+const weatherData = async (baseURL,generateZip,apiKey) => {
+    const response = await fetch (baseURL + generateZip + '&units=metric' + apiKey)
+    try {
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.log('error', error);
+    }
 }
 
 
-const postData = async(url = '', data = {}) => {
+const updateUI = async() => {
+    const request = await fetch ('/all');
+    try {
+      const uiData = await request.json();
+      document.getElementById('date').innerHTML = `Date: ${uiData.addInput.newDate}`;
+      document.getElementById('temp').innerHTML = `Temperature: ${uiData.addInput.temperature}`;
+      document.getElementById('content').innerHTML = `Feeling today: ${uiData.addInput.feelings}`;
+    }catch (error) {
+      console.log('error', error)
+    }
+  }
+  
+
+
+const postData = async (url = '', data = {}) => {
 
     const response = await fetch(url, {
         method: 'POST',
@@ -68,15 +74,5 @@ const postData = async(url = '', data = {}) => {
 };
 
 
-const getData = async(url = '') => {
 
-    const response = await fetch(url)
 
-    try {
-        const newData = await response.json();
-        console.log(newData);
-        return newData;
-    } catch (error) {
-        console.log("error", error);
-    }
-};

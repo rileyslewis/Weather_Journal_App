@@ -40,9 +40,10 @@ function sendData(request, response) {
 app.post('/addWeather', addWeather);
 
 function addWeather(request, response) {
-    const body = request.body;
-    projectData.temperature = body.temperature;
-    projectData.date = body.date;
-    projectData.userResponse = body.userResponse;
+    projectData.addInput = {
+        newDate: request.body.date,
+        temperature: request.body.temperature,
+        feelings: request.body.feelings,
+    }
 
 }
