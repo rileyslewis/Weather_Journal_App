@@ -36,7 +36,7 @@ function sendData(request, response) {
     response.send(projectData);
 };
 
-
+app.post('/add', (request, response) => response.send('post received'));
 app.post('/addWeather', addWeather);
 
 function addWeather(request, response) {
